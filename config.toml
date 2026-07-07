@@ -1,0 +1,9 @@
+relativeURLs = true
+title = "Chrisma Dsouza"
+theme = "academimal"
+sectionPagesMenu = "main"
+defaultContentLanguage = "en"
+
+[params]
+    shortbio = "Senior Research Associate at IFMR LEAD | Applied Microeconomics, Political Economy, Environment & Development Economics"
+    logo = "Capture.JPG"
