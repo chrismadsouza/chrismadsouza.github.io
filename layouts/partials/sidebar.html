@@ -1,0 +1,13 @@
+<p class="contactinfo"><a href="{{ "#bio" | relURL }}">About</a></p>
+{{ with .GetPage "/sections/cv.md" }}
+<p class="contactinfo"><a href="{{ "#cv" | relURL }}">CV</a></p>
+{{ end }}
+{{ with .GetPage "/sections/research.md" }}
+<p class="contactinfo"><a href="{{ "#research" | relURL }}">Research</a></p>
+{{ end }}
+{{ with .GetPage "/sections/teaching.md" }}
+<p class="contactinfo"><a href="{{ "#teaching" | relURL }}">Teaching</a></p>
+{{ end }}
+{{ with .GetPage "/sections/contact.md" }}
+<p class="lastcontactinfo"><a href="{{ "#contact" | relURL }}">Contact</a></p>
+{{ end }}
