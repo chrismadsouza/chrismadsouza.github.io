@@ -1,5 +1,3 @@
-I'm a Senior Research Associate at IFMR LEAD, working under Professors Farzana Afridi and Prabhat Barnwal on projects in development and environmental economics.
+I am a second-year PhD student in Applied Economics and Management at Cornell University.
 
-My research interests lie in applied microeconomics, and more specifically in political economy, environment, and development economics. I enjoy working on projects that link data science and economics.
-
-Outside of research, I love traveling, trekking, playing the piano, being in nature, astronomy, and good desserts.
+My research lies at the intersection of development, environment, and urban economics. Using experimental and quasi-experimental methods, I study clean energy adoption, environmental externalities, and the role of state capacity in addressing environmental challenges facing rapidly urbanizing cities, particularly in India.
