@@ -18,9 +18,11 @@
 {{ $scratch := newScratch }}
 {{ $scratch.Set "pubcnt" 0 }}
 
+{{ $pubCount := 0 }}
+{{ range .Site.Data.publications }}{{ with .works }}{{ $pubCount = add $pubCount (len .) }}{{ end }}{{ end }}
+{{ if gt $pubCount 0 }}
 <h3 id="publications">Publications</h3>
-{{ with .Site.Data.publications }}
-{{ range . }}
+{{ range .Site.Data.publications }}
 {{ range .works }}
 {{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
 {{ $scratch.Add "pubcnt" 1 }}
@@ -28,9 +30,11 @@
 {{ end }}
 {{ end }}
 
+{{ $wpCount := 0 }}
+{{ range .Site.Data.working_papers }}{{ with .works }}{{ $wpCount = add $wpCount (len .) }}{{ end }}{{ end }}
+{{ if gt $wpCount 0 }}
 <h3 id="working-papers">Working Papers</h3>
-{{ with .Site.Data.working_papers }}
-{{ range . }}
+{{ range .Site.Data.working_papers }}
 {{ range .works }}
 {{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
 {{ $scratch.Add "pubcnt" 1 }}
@@ -38,9 +42,11 @@
 {{ end }}
 {{ end }}
 
+{{ $wipCount := 0 }}
+{{ range .Site.Data.work_in_progress }}{{ with .works }}{{ $wipCount = add $wipCount (len .) }}{{ end }}{{ end }}
+{{ if gt $wipCount 0 }}
 <h3 id="work-in-progress">Work in Progress</h3>
-{{ with .Site.Data.work_in_progress }}
-{{ range . }}
+{{ range .Site.Data.work_in_progress }}
 {{ range .works }}
 {{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
 {{ $scratch.Add "pubcnt" 1 }}

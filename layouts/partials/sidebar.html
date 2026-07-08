@@ -4,9 +4,21 @@
 {{ end }}
 {{ with .GetPage "/sections/research.md" }}
 <p class="contactinfo"><a href="{{ "#research" | relURL }}">Research</a></p>
+{{ $pubCount := 0 }}
+{{ range .Site.Data.publications }}{{ with .works }}{{ $pubCount = add $pubCount (len .) }}{{ end }}{{ end }}
+{{ if gt $pubCount 0 }}
 <p class="contactinfo" style="margin-left: 15px;"><a href="{{ "#publications" | relURL }}">Publications</a></p>
+{{ end }}
+{{ $wpCount := 0 }}
+{{ range .Site.Data.working_papers }}{{ with .works }}{{ $wpCount = add $wpCount (len .) }}{{ end }}{{ end }}
+{{ if gt $wpCount 0 }}
 <p class="contactinfo" style="margin-left: 15px;"><a href="{{ "#working-papers" | relURL }}">Working Papers</a></p>
+{{ end }}
+{{ $wipCount := 0 }}
+{{ range .Site.Data.work_in_progress }}{{ with .works }}{{ $wipCount = add $wipCount (len .) }}{{ end }}{{ end }}
+{{ if gt $wipCount 0 }}
 <p class="contactinfo" style="margin-left: 15px;"><a href="{{ "#work-in-progress" | relURL }}">Work in Progress</a></p>
+{{ end }}
 {{ end }}
 {{ with .GetPage "/sections/teaching.md" }}
 <p class="contactinfo"><a href="{{ "#teaching" | relURL }}">Teaching</a></p>

@@ -62,6 +62,8 @@ These three are not edited as prose — they're entries in YAML data files, one 
 - `data/working_papers/list.yaml`
 - `data/work_in_progress/list.yaml`
 
+Each sub-heading only appears once its file has at least one entry — so right now, with only Work in Progress populated, the Publications and Working Papers headings are hidden automatically. Add an entry to either file and its heading will reappear on the next deploy; delete all entries and it hides again. You don't need to touch any template files to show/hide these — just add or remove entries.
+
 Edit the relevant file on GitHub and add an entry under `works:`, following YAML formatting carefully (indentation matters):
 
 ```yaml
