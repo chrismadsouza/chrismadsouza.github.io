@@ -7,7 +7,7 @@ The site now runs on **Hugo** with the **academimal** theme. Every time you push
 | Section | File |
 |---|---|
 | About | `content/sections/aboutme.md` |
-| CV | `content/sections/cv.md` (links to `static/pdf/cv_github.pdf`) |
+| CV | `content/sections/cv.md` (upload in `static/pdf/cv_github.pdf`) |
 | Research  | `content/sections/research.md` |
 | Research → Publications | `data/publications/list.yaml` (auto-generated list, not plain Markdown — see below) |
 | Research → Working Papers | `data/working_papers/list.yaml` (same format as Publications) |
@@ -36,23 +36,6 @@ The site now runs on **Hugo** with the **academimal** theme. Every time you push
 Go to the **Actions** tab: https://github.com/chrismadsouza/chrismadsouza.github.io/actions
 A green checkmark next to "Deploy Hugo site to Pages" means it's live. A red X means something broke — click into it to see the error (most commonly a Markdown/TOML syntax typo).
 
-## Updating your CV
-
-1. Go to `static/pdf/` in the repo.
-2. Delete the old `cv_github.pdf` (or upload a new file with the same name to overwrite it) via **Add file → Upload files**.
-3. Commit to `master`.
-
-## Adding a teaching entry
-
-Add another line in `teaching.md`:
-
-```
-AEM 4420/5420: Emerging Markets, (Fall 2025)
-
-AEM 4510: Environmental Economics, (Spring 2026)
-
-Your New Course: Course Title, (Term Year)
-```
 
 ## Adding a paper (Publications, Working Papers, or Work in Progress)
 
