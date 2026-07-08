@@ -1,4 +1,4 @@
-__Email__: [claredsouza27@gmail.com](mailto:claredsouza27@gmail.com)
+__Email__: [ccd84@cornell.edu](mailto:ccd84@cornell.edu)
 
 __Office__: 360 Warren Hall, Cornell University
 
