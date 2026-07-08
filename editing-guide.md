@@ -9,12 +9,13 @@ Your site now runs on **Hugo** with the **academimal** theme. Every time you pus
 | About | `content/sections/aboutme.md` |
 | CV | `content/sections/cv.md` (links to `static/pdf/cv_github.pdf`) |
 | Research | `content/sections/research.md` |
+| Publications | `data/publications/list.yaml` (auto-generated list, not plain Markdown — see below) |
 | Teaching | `content/sections/teaching.md` |
 | Contact | `content/sections/contact.md` |
 | Site title / short bio / photo | `config.toml` |
 | Section order / headings | `layouts/index.html` and `layouts/partials/sidebar.html` |
 
-All five section files are plain **Markdown** — no HTML needed for normal edits.
+The About/CV/Research/Teaching/Contact files are plain **Markdown** — no HTML needed for normal edits. Publications is different: it's a data file (YAML) that auto-generates its section, described below.
 
 ## Making an edit directly on GitHub (no local setup needed)
 
@@ -61,6 +62,28 @@ AEM 4510: Environmental Economics, (Spring 2026)
 
 Your New Course: Course Title, (Term Year)
 ```
+
+## Adding a publication
+
+Publications aren't edited as prose — they're entries in `data/publications/list.yaml`, which automatically renders as a "Publications" section between Research and Teaching (only shows up once you add at least one entry). Edit that file on GitHub and add an entry under `works:`, following YAML formatting (indentation matters):
+
+```yaml
+works:
+  - title: "Your Paper Title"
+    pdflink: "/pdf/your_paper.pdf"
+    book: "Journal Name, Year"
+    coauthors: "Coauthor One and Coauthor Two"
+    links:
+      - url: "/pdf/appendix.pdf"
+        text: "Online Appendix"
+    abstract: >
+      Optional short abstract text goes here.
+```
+
+Notes:
+- `pdflink`, `coauthors`, `links`, and `abstract` are all optional — include only what you have.
+- If you reference a PDF (via `pdflink` or `links`), upload it to `static/pdf/` first (same process as updating your CV, below), then point to it as `/pdf/filename.pdf`.
+- Each new entry is another `- title: ...` block at the same indentation level as the example above.
 
 ## Editing site-wide settings
 
