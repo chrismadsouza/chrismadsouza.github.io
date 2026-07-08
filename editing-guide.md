@@ -1,6 +1,6 @@
 # Editing chrismadsouza.github.io
 
-Your site now runs on **Hugo** with the **academimal** theme. Every time you push a change to the `master` branch, GitHub Actions automatically rebuilds and republishes the live site at https://chrismadsouza.github.io/ — usually within 1–2 minutes.
+The site now runs on **Hugo** with the **academimal** theme. Every time you push a change to the `master` branch, GitHub Actions automatically rebuilds and republishes the live site at https://chrismadsouza.github.io/. Original layout from https://gautam-rao.com/
 
 ## Where things live
 
@@ -8,7 +8,7 @@ Your site now runs on **Hugo** with the **academimal** theme. Every time you pus
 |---|---|
 | About | `content/sections/aboutme.md` |
 | CV | `content/sections/cv.md` (links to `static/pdf/cv_github.pdf`) |
-| Research (intro text, optional) | `content/sections/research.md` |
+| Research  | `content/sections/research.md` |
 | Research → Publications | `data/publications/list.yaml` (auto-generated list, not plain Markdown — see below) |
 | Research → Working Papers | `data/working_papers/list.yaml` (same format as Publications) |
 | Research → Work in Progress | `data/work_in_progress/list.yaml` (same format as Publications) |
@@ -17,9 +17,6 @@ Your site now runs on **Hugo** with the **academimal** theme. Every time you pus
 | Site title / short bio / photo | `config.toml` |
 | Section order / headings | `layouts/index.html` and `layouts/partials/sidebar.html` |
 
-Research is now a parent section with three fixed sub-sections — **Publications**, **Working Papers**, and **Work in Progress** — shown both in the sidebar (indented under "Research") and on the page (as sub-headings under "Research"). Each is its own data file, described below. Currently only Work in Progress has an entry.
-
-The About/CV/Research/Teaching/Contact files are plain **Markdown** — no HTML needed for normal edits. The three Research data files are YAML, described below.
 
 ## Making an edit directly on GitHub (no local setup needed)
 
@@ -65,7 +62,7 @@ These three are not edited as prose — they're entries in YAML data files, one 
 - `data/working_papers/list.yaml`
 - `data/work_in_progress/list.yaml`
 
-Each auto-renders under its matching sub-heading inside Research (a sub-section stays hidden from the sidebar's anchor jump only in the sense that it's just empty — the heading itself always shows). Edit the relevant file on GitHub and add an entry under `works:`, following YAML formatting carefully (indentation matters):
+Edit the relevant file on GitHub and add an entry under `works:`, following YAML formatting carefully (indentation matters):
 
 ```yaml
 works:
@@ -80,18 +77,11 @@ works:
       Optional short abstract text goes here.
 ```
 
-The existing Work in Progress entry looks like this (a minimal example — most fields are optional):
-
-```yaml
-works:
-  - title: "Long-term Impact of Short-term Subsidies"
-    coauthors: "Farzana Afridi and Prabhat Barnwal"
-```
 
 Notes:
 - `pdflink`, `book`, `coauthors`, `links`, and `abstract` are all optional — include only what you have.
 - If you reference a PDF (via `pdflink` or `links`), upload it to `static/pdf/` first (same process as updating your CV, below), then point to it as `/pdf/filename.pdf`.
-- Each new entry is another `- title: ...` block at the same indentation level as the example above, still under the single `works:` key at the top of the file.
+
 
 ## Editing site-wide settings
 
@@ -114,4 +104,4 @@ title = "Chrisma Dsouza"
 
 Every past version of every file is preserved in GitHub's history. To undo a bad edit:
 1. Go to the file → **History** (clock icon) → find the last good version → **View** → **Edit this file** → copy its content back → commit.
-2. Or ask me to roll it back for you.
+
