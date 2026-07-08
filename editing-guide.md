@@ -8,14 +8,18 @@ Your site now runs on **Hugo** with the **academimal** theme. Every time you pus
 |---|---|
 | About | `content/sections/aboutme.md` |
 | CV | `content/sections/cv.md` (links to `static/pdf/cv_github.pdf`) |
-| Research | `content/sections/research.md` |
-| Publications | `data/publications/list.yaml` (auto-generated list, not plain Markdown — see below) |
+| Research (intro text, optional) | `content/sections/research.md` |
+| Research → Publications | `data/publications/list.yaml` (auto-generated list, not plain Markdown — see below) |
+| Research → Working Papers | `data/working_papers/list.yaml` (same format as Publications) |
+| Research → Work in Progress | `data/work_in_progress/list.yaml` (same format as Publications) |
 | Teaching | `content/sections/teaching.md` |
 | Contact | `content/sections/contact.md` |
 | Site title / short bio / photo | `config.toml` |
 | Section order / headings | `layouts/index.html` and `layouts/partials/sidebar.html` |
 
-The About/CV/Research/Teaching/Contact files are plain **Markdown** — no HTML needed for normal edits. Publications is different: it's a data file (YAML) that auto-generates its section, described below.
+Research is now a parent section with three fixed sub-sections — **Publications**, **Working Papers**, and **Work in Progress** — shown both in the sidebar (indented under "Research") and on the page (as sub-headings under "Research"). Each is its own data file, described below. Currently only Work in Progress has an entry.
+
+The About/CV/Research/Teaching/Contact files are plain **Markdown** — no HTML needed for normal edits. The three Research data files are YAML, described below.
 
 ## Making an edit directly on GitHub (no local setup needed)
 
@@ -24,7 +28,7 @@ The About/CV/Research/Teaching/Contact files are plain **Markdown** — no HTML 
 3. Click the **pencil icon** (Edit this file) in the top right.
 4. Make your changes. Markdown basics:
    - `**bold text**` → **bold text**
-   - `### Heading` → a subheading (used for "Work in Progress" in Research)
+   - `### Heading` → a subheading
    - `[link text](https://example.com)` → a clickable link
    - Blank line = new paragraph
 5. Scroll down, add a short commit message describing the change, and click **Commit changes directly to the `master` branch**.
@@ -41,19 +45,9 @@ A green checkmark next to "Deploy Hugo site to Pages" means it's live. A red X m
 2. Delete the old `cv_github.pdf` (or upload a new file with the same name to overwrite it) via **Add file → Upload files**.
 3. Commit to `master`.
 
-## Adding another research or teaching entry
+## Adding a teaching entry
 
-Add another paragraph in the same style, e.g. in `research.md`:
-
-```
-### Work in Progress
-
-**Long-term Impact of Short-term Subsidies.** (with Farzana Afridi and Prabhat Barnwal)
-
-**Your New Paper Title.** (with Coauthor Name)
-```
-
-Or in `teaching.md`:
+Add another line in `teaching.md`:
 
 ```
 AEM 4420/5420: Emerging Markets, (Fall 2025)
@@ -63,9 +57,15 @@ AEM 4510: Environmental Economics, (Spring 2026)
 Your New Course: Course Title, (Term Year)
 ```
 
-## Adding a publication
+## Adding a paper (Publications, Working Papers, or Work in Progress)
 
-Publications aren't edited as prose — they're entries in `data/publications/list.yaml`, which automatically renders as a "Publications" section between Research and Teaching (only shows up once you add at least one entry). Edit that file on GitHub and add an entry under `works:`, following YAML formatting (indentation matters):
+These three are not edited as prose — they're entries in YAML data files, one per sub-section:
+
+- `data/publications/list.yaml`
+- `data/working_papers/list.yaml`
+- `data/work_in_progress/list.yaml`
+
+Each auto-renders under its matching sub-heading inside Research (a sub-section stays hidden from the sidebar's anchor jump only in the sense that it's just empty — the heading itself always shows). Edit the relevant file on GitHub and add an entry under `works:`, following YAML formatting carefully (indentation matters):
 
 ```yaml
 works:
@@ -80,10 +80,18 @@ works:
       Optional short abstract text goes here.
 ```
 
+The existing Work in Progress entry looks like this (a minimal example — most fields are optional):
+
+```yaml
+works:
+  - title: "Long-term Impact of Short-term Subsidies"
+    coauthors: "Farzana Afridi and Prabhat Barnwal"
+```
+
 Notes:
-- `pdflink`, `coauthors`, `links`, and `abstract` are all optional — include only what you have.
+- `pdflink`, `book`, `coauthors`, `links`, and `abstract` are all optional — include only what you have.
 - If you reference a PDF (via `pdflink` or `links`), upload it to `static/pdf/` first (same process as updating your CV, below), then point to it as `/pdf/filename.pdf`.
-- Each new entry is another `- title: ...` block at the same indentation level as the example above.
+- Each new entry is another `- title: ...` block at the same indentation level as the example above, still under the single `works:` key at the top of the file.
 
 ## Editing site-wide settings
 
@@ -99,7 +107,7 @@ title = "Chrisma Dsouza"
 ## Things to be careful about
 
 - **Don't touch the `themes/academimal` folder** — it's a pinned theme dependency (a git submodule), not regular content. Editing it directly on GitHub can break the submodule link.
-- **Don't rename section files** (e.g. `aboutme.md`) unless you also update `layouts/index.html` and `layouts/partials/sidebar.html` to match — those files reference the section filenames directly.
+- **Don't rename section files or data files/folders** (e.g. `aboutme.md`, `data/work_in_progress/`) unless you also update `layouts/index.html` and `layouts/partials/sidebar.html` to match — those files reference the exact filenames and folder names directly.
 - For a bigger redesign, layout change, or new section type, it's easiest to ask me again — that involves editing Hugo templates, not just content.
 
 ## If something breaks

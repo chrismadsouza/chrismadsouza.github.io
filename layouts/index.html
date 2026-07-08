@@ -14,17 +14,37 @@
 <hr>
 <h2 id="research">Research</h2>
 {{ .Content }}
-{{ end }}
 
 {{ $scratch := newScratch }}
 {{ $scratch.Set "pubcnt" 0 }}
+
+<h3 id="publications">Publications</h3>
 {{ with .Site.Data.publications }}
-<hr>
-<h2 id="publications">Publications</h2>
 {{ range . }}
 {{ range .works }}
 {{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
 {{ $scratch.Add "pubcnt" 1 }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+<h3 id="working-papers">Working Papers</h3>
+{{ with .Site.Data.working_papers }}
+{{ range . }}
+{{ range .works }}
+{{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
+{{ $scratch.Add "pubcnt" 1 }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+<h3 id="work-in-progress">Work in Progress</h3>
+{{ with .Site.Data.work_in_progress }}
+{{ range . }}
+{{ range .works }}
+{{ partial "publication.html" (dict "context" . "pid" ($scratch.Get "pubcnt")) }}
+{{ $scratch.Add "pubcnt" 1 }}
+{{ end }}
 {{ end }}
 {{ end }}
 {{ end }}

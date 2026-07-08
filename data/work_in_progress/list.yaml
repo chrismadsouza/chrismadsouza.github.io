@@ -1,0 +1,12 @@
+works:
+  - title: "Long-term Impact of Short-term Subsidies"
+    coauthors: "Farzana Afridi and Prabhat Barnwal"
+# Add further entries below in the same format, e.g.:
+# - title: "Paper Title Here"
+#   pdflink: "/pdf/your_paper.pdf"
+#   coauthors: "Coauthor One and Coauthor Two"
+#   links:
+#     - url: "/pdf/appendix.pdf"
+#       text: "Online Appendix"
+#   abstract: >
+#     Short abstract text goes here.
